@@ -1,0 +1,499 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Uchen', serif;
+}
+.all-content{
+    background: white;
+}
+/* navbar */
+#navbar{
+    background-color:  #C08B5C;
+    padding-left: 65px;
+    font-weight: bold;
+}
+#logo{
+    font-size: 23px;
+    color: white;
+}
+#logo img{
+    margin-bottom: 15px;
+}
+.navbar-nav{
+    margin-left: 10px;
+}
+.nav-link{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    margin-left: 15px;
+    transition: 0.5s ease;
+}
+.nav-link:hover{
+    background-color: #F7C566;
+    color: white;
+    border-radius: 5px;
+}
+.icons{
+    margin-left: 30px;
+}
+.icons img{
+    margin-left: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+.icons img:hover{
+    transform: translateY(-5px);
+}
+@media screen and (max-width:330px){
+    #logo{
+        font-size: 15px;
+    }
+}
+/* navbar end */
+/* home section */
+.home{
+    width: 100%;
+    height: 88.5vh;
+    display: flex;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(image/cla.png);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 0;
+}
+.home .img{
+    flex: 1 1 400px;
+}
+.home .img img{
+    width: 100%;
+}
+.home .content{
+    flex: 1 1 400px;
+    margin-left: 60px;
+}
+.content h3{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+.content h2{
+    font-size: 60px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+}
+.changecontent::after{
+    content: ' ';
+    color: rgb(238, 174, 54);
+    animation: changetext 10s infinite linear;
+    font-weight: bold;
+}
+
+/* home section end */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 8px 15px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:  0.3s ease;
+}
+
+button:hover {
+    background: #555;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery-item {
+    width: 30%;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    max-width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    margin: 15% auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Wishlist Styling */
+#wishlist {
+    list-style: none;
+    padding: 0;
+}
+
+#wishlist li {
+    margin: 10px 0;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#wishlist li img {
+    width: 150px;
+    height:  150px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eea3a3;
+    background: url();
+}
+
+header {
+    background: wheat;
+    color: black;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 2px;
+    margin: 2px;
+}
+nav ul:hover{
+    color: #C08B5C;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #C08B5C;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+.gallery:hover{
+    color: #C08B5C;
+}
+
+.gallery-item {
+    width: 30%;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.gallery-item:hover{
+    color: #C08B5C;
+}
+.gallery-item img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+.gallery-item img:hover{
+    background: #C08B5C;
+}
+/* Responsive for Tablets */
+@media (max-width: 768px) {
+    .gallery-item {
+        width: 45%; /* Two items per row */
+    }
+}
+
+/* Responsive for Mobile Devices */
+@media (max-width: 480px) {
+    .gallery-item {
+        width: 100%; /* One item per row */
+        height: 100%;
+    }
+}
+button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #C08B5C;
+    color: white;
+    border: rgba(161,109,14,1);
+    border-radius: 5px;
+    cursor: pointer;
+    gap: 25px;
+    transition:0.3s ease;
+}
+
+button:hover {
+    background: #F7C566;
+}
+
+#wishlist {
+    list-style: none;
+    padding: 0;
+}
+
+#wishlist li {
+    margin: 10px 0;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#wishlist li img {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .wishlist ul li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .wishlist ul li button {
+        margin-top: 10px;
+    }
+
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    .image {
+        width: 150px;
+        height: 150px;
+    }
+
+    .wishlist ul li {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wishlist ul li img {
+        max-width: 40px;
+    }
+
+    .wishlist-btn, .send-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .wishlist ul li button {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+}
+
+/* footer */
+#footer{
+    width: 100%;
+    background-color: #C08B5C;
+    box-shadow: 0px 0px 5px black;
+    margin-top: 100px;
+}
+#footer h1{
+    color: white;
+    padding-top: 30px;
+}
+#footer p{
+    color: white;
+}
+.icons i{
+    background-color: white;
+    color: #F7C566;
+    border-radius: 50px;
+    padding: 6px;
+    font-size: 30px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.icons i:hover{
+    background-color: #C08B5C;
+    color: white;
+}
+.copyright{
+    color: white;
+    margin-top: 20px;
+}
+.credite{
+    color: white;
+}
+/* footer */
+html{
+    scroll-behavior: smooth;
+}
+.arrow{
+    position: fixed;
+    background-color: rgb(241, 178, 60);
+    border-radius: 50px;
+    height: 50px;
+    bottom: 40px;
+    right: 50px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* Media Queries for Responsive Footer */
+
+/* For tablets and smaller screens */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #footer h1 {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .credite {
+        font-size: 20px;
+    }
+
+    #footer p {
+        font-size: 12px;
+    }
+    .icons i{
+        font-size: 23px;
+
+    }
+    .copyright{
+        margin-top: 20px;
+
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 480px) {
+    footer {
+        font-size: 20px;
+    }
+
+    #footer h1 ,
+    #footer p {
+        font-size: 22px;
+    }
+
+    .arrow {
+        font-size: 12px;
+    }
+}

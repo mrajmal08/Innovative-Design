@@ -1,0 +1,293 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Uchen', serif;
+  }
+  .all-content{
+    background: url(image/image.png.jpg);
+  }
+  /* navbar */
+  #navbar{
+    background-color: #C08B5C;
+    padding-left: 60px;
+    font-weight: bold;
+  }
+  #logo{
+    font-size: 23px;
+    color: white;
+  }
+  #logo img{
+    margin-bottom: 15px;
+  }
+  .navbar-nav{
+    margin-left: 10px;
+  }
+  .nav-link{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    margin-left: 15px;
+    transition: 0.5s ease;
+  }
+  .nav-link:hover{
+    background-color: #F7C566;
+    color: white;
+    border-radius: 5px;
+  }
+  .icons{
+    margin-left: 30px;
+  }
+  .icons img{
+    margin-left: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+  .icons img:hover{
+    transform: translateY(-5px);
+  }
+  @media screen and (max-width:330px){
+    #logo{
+        font-size: 15px;
+    }
+  }
+  /* navbar end */
+  /* home section */
+  .home{
+    width: 100%;
+    height: 88.5vh;
+    display: flex;
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(image/cla.png);
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 0;
+  }
+  .home .img{
+    flex: 1 1 400px;
+  }
+  .home .img img{
+    width: 100%;
+  }
+  .home .content{
+    flex: 1 1 400px;
+    margin-left: 60px;
+  }
+  .content h3{
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+  }
+  .content h2{
+    font-size: 60px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+  }
+  .changecontent::after{
+    content: ' ';
+    color: rgba(161,109,14,1);
+    animation: changetext 10s infinite linear;
+    font-weight: bold;
+  }
+  @keyframes changetext{
+    0%{content: "Living Room";}
+    20%{content: "Bed Room";}
+    50%{content: "Kirchen Design";}
+    60%{content: "Dining Room";}
+    100%{content: "Bath Room";}
+  }
+  .content p{
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+  }
+  .content .btn{
+    width: 110px;
+    height: 38px;
+    background-color: #573818;
+    color: white;
+  }
+  @media screen and (max-width:800px){
+    .content h3{
+        font-size: 50px;
+    }
+  }
+  @media screen and (max-width:860px){
+    .home{
+        height: 120vh;
+    }
+  }
+  @media screen and (max-width:560px){
+    .home{
+        height: 100vh;
+    }
+  }
+  @media screen and (max-width:330px){
+    .content h2{
+        font-size: 30px;
+    }
+    .content h3{
+        font-size: 30px;
+    }
+  }
+  /* home section end */
+
+
+
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+
+  :root {
+    --primary-clr: #f0942b;
+    --white: #fff;
+    --text-clr: #f3ecec;
+    --tabs-list-bg-clr: #C08B5c;
+    --btn-hvr: #F7C566;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Open Sans", sans-serif;
+  }
+
+  body{
+    background: var(--primary-clr);
+    font-size: 12px;
+    color: var(--text-clr);
+  }
+
+  .flex_align_justify{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .wrapper{
+    min-height: 100vh;
+    padding: 0 20px;
+  }
+
+  .tc_wrap{
+    width: 700px;
+    max-width: 100%;
+    height: 450px;
+    background: var(--white);
+    display: flex;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .tc_wrap .tabs_list{
+    width: 200px;
+    background: var(--tabs-list-bg-clr);
+    height: 100%;
+  }
+
+  .tc_wrap .tabs_content{
+    width: calc(100% - 200px);
+    padding: 0 10px 0 20px;
+    height: 100%;
+  }
+
+  .tc_wrap .tabs_content .tab_head,
+  .tc_wrap .tabs_content .tab_foot{
+    color: var(--primary-clr);
+    padding: 25px 0;
+    height: 70px;
+  }
+
+  .tc_wrap .tabs_content .tab_head{
+    text-align: center;
+  }
+
+  .tc_wrap .tabs_content .tab_body{
+    height: calc(100% - 140px);
+    overflow: auto;
+  }
+
+  .tc_wrap .tabs_list ul{
+    padding: 70px 20px;
+    text-align: right;
+  }
+
+  .tc_wrap .tabs_list ul li{
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.5s ease;
+  }
+
+  .tc_wrap .tabs_list ul li:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -20px;
+    width: 2px;
+    height: 100%;
+    background: var(--primary-clr);
+    opacity: 0;
+    transition: all 0.5s ease;
+  }
+
+  .tc_wrap .tabs_list ul li.active,
+  .tc_wrap .tabs_list ul li:hover{
+    color: var(--primary-clr);
+  }
+
+  .tc_wrap .tabs_list ul li.active:before{
+    opacity: 1;
+  }
+
+  .tc_wrap .tabs_content .tab_body .tab_item h3{
+    padding-top: 10px;
+    margin-bottom: 10px;
+    color: var(--primary-clr);
+  }
+
+  .tc_wrap .tabs_content .tab_body .tab_item p{
+    margin-bottom: 20px;
+  }
+
+  .tc_wrap .tabs_content .tab_body .tab_item.active{
+    display: block !important;
+  }
+
+  .tc_wrap .tabs_content .tab_foot button{
+      width: 125px;
+      padding: 5px 10px;
+      background: transparent;
+      border: 1px solid;
+      border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+
+  .tc_wrap .tabs_content .tab_foot button.decline{
+    margin-right: 15px;
+    border-color: var(--tabs-list-bg-clr);
+    color: var(--tabs-list-bg-clr);
+  }
+
+  .tc_wrap .tabs_content .tab_foot button.agree{
+     background: var(--primary-clr);
+    border-color: var(--primary-clr);
+    color: var(--white);
+  }
+
+  .tc_wrap .tabs_content .tab_foot button.decline:hover{
+    background: var(--tabs-list-bg-clr);
+    color: var(--white);
+  }
+
+  .tc_wrap .tabs_content .tab_foot button.agree:hover{
+    background: var(--btn-hvr);
+    border-color: var(--btn-hvr);
+  }
