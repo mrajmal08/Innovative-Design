@@ -21,8 +21,9 @@ class WelcomeController extends Controller
     {
 
         $design = Design::where('cat_id', $id)->get();
+        $designers = User::where('role_id', 2)->orderBy('id', 'DESC')->get();
 
-        return view('welcome.designs', compact('design'));
+        return view('welcome.designs', compact('design', 'designers'));
     }
     public function designers()
     {

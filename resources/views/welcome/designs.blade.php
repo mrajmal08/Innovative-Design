@@ -22,6 +22,13 @@
         text-decoration: none;
 
     }
+    .modal {
+  z-index: 1050;
+}
+
+.modal-backdrop {
+  z-index: 1040;
+}
 </style>
 @endpush
 @section('content')
@@ -46,8 +53,36 @@
 
             <div class="gallery-item">
                 <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" alt="Living Room " width="450" height="300">
-                <button onclick="sendToDesigner('living/iamd3.png')">Send to Designer</button>
+                <!-- <button onclick="sendToDesigner('living/iamd3.png')">Send to Designer</button> -->
+                <button type="button"  data-toggle="modal" data-target="#exampleModal{{$item->id}}">Send to Designer</button>
                 <a type="button" class="wish-btn" href="{{ route('add_to_wishlist', $item->id) }}">Add to Wishlist</a>
+            </div>
+
+            <div class="modal fade" id="exampleModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                   <form method="POST" action="{{ route('assign.design') }}">
+                    @csrf
+                   <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Send this design to the designer</h5>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <input type="hidden" name="design_id" value="{{ $item->id }}" />
+                        <select for="designers" class="form-control" name="assignee">
+                            <option selected disabled> -- select one --</option>
+                            @foreach ($designers as $row)
+                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                    </div>
+                   </form>
+                    </div>
+                </div>
             </div>
 
             @endforeach

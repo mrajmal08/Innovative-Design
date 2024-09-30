@@ -56,3 +56,7 @@ Route::post('/design/store', [App\Http\Controllers\DesignController::class, 'sto
 Route::get('/design/edit/{id}', [App\Http\Controllers\DesignController::class, 'edit'])->name('design.edit');
 Route::post('/design/update/{id}', [App\Http\Controllers\DesignController::class, 'update'])->name('design.update');
 Route::get('/design/delete/{id}', [App\Http\Controllers\DesignController::class, 'delete'])->name('design.delete');
+
+Route::post('/assign_design', [App\Http\Controllers\UserController::class, 'assignDesign'])->name('assign.design');
+Route::get('/assign_tasks', [App\Http\Controllers\UserController::class, 'assignTasks'])->name('assign.tasks');
+Route::get('/reported_tasks', [App\Http\Controllers\UserController::class, 'reportedTasks'])->name('reported.tasks');

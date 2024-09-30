@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use App\Models\UserDesign;
 use App\Models\User;
 use Carbon\Carbon;
 use Validator;
@@ -59,7 +61,7 @@ class UserController extends Controller
         try {
             $data['name'] = $request->name;
             $data['email'] = $request->email;
-            $data['password'] = $request->password;
+            $data['password'] = Hash::make($request->password);
             $data['phone_no'] = $request->phone_no;
             $data['city'] = $request->city;
             $data['country'] = $request->country;
@@ -151,7 +153,7 @@ class UserController extends Controller
             $validatedData['email'] = $request->email;
         }
         if ($request->password) {
-            $validatedData['password'] = $request->password;
+            $validatedData['password'] = Hash::make($request->password);
         }
         if ($request->phone_no) {
             $validatedData['phone_no'] = $request->phone_no;
@@ -172,7 +174,6 @@ class UserController extends Controller
             $validatedData['skills'] = $request->skills;
         }
 
-
         $user->update($validatedData);
         $flasher->option('position', 'top-center')->addSuccess('User updated Successfully');
         return redirect()->route('users.index')->with('message', 'User updated Successfully');
@@ -180,7 +181,6 @@ class UserController extends Controller
 
     public function delete($id, FlasherInterface $flasher)
     {
-
         $user = User::find($id);
         if (!$user) {
             $flasher->option('position', 'top-center')->addError('Id not found');
@@ -193,4 +193,61 @@ class UserController extends Controller
         ])->addSuccess('User deleted Successfully');
         return redirect()->route('users.index')->with('message', 'User deleted Successfully');
     }
+
+    public function assignDesign(Request $request, FlasherInterface $flasher){
+
+        try {
+
+            if(!$request->assignee){
+                $flasher->option('position', 'top-center')->addError('please select the designer');
+                return redirect()->back()->with('please select the designer');
+            }
+
+            $userDesign = new UserDesign();
+
+            $alreadyExist = $userDesign->where([
+                ['assignee', $request->assignee],
+                ['design_id', $request->design_id],
+                ['reporter', auth()->user()->id]
+            ])->first();
+
+            if ($alreadyExist) {
+                $message = 'This design is already assigned to this designer';
+                $flasher->option('position', 'top-center')->addError($message);
+                return redirect()->back()->with($message);
+            }
+
+            $userDesign['assignee'] = $request->assignee;
+            $userDesign['design_id'] = $request->design_id;
+            $userDesign['reporter'] = auth()->user()->id;
+
+            $userDesign->save();
+
+            $flasher->option('position', 'top-center')->addSuccess('Design assign to the designer Successfully');
+            return redirect()->back()->with('message', 'Design assign to the designer Successfully');
+
+        } catch (\Exception $e) {
+            $flasher->option('position', 'top-center')->addError('Something went wrong');
+            return redirect()->back()->with('message', 'Something went wrong');
+        }
+    }
+
+    public function assignTasks(){
+
+        $tasks = UserDesign::with('design')
+        ->where('assignee', auth()->user()->id)
+        ->get();
+        return view('dashboard.tasks.index', compact('tasks'));
+    }
+
+    public function reportedTasks() {
+
+        $tasks = UserDesign::with('design')
+        ->where('reporter', auth()->user()->id)
+        ->get();
+
+        return view('dashboard.tasks.reported', compact('tasks'));
+    }
+
+
 }

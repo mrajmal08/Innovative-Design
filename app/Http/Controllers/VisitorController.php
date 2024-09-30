@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
@@ -57,7 +58,7 @@ class VisitorController extends Controller
         try {
             $data['name'] = $request->name;
             $data['email'] = $request->email;
-            $data['password'] = $request->password;
+            $data['password'] = Hash::make($request->password);
             $data['phone_no'] = $request->phone_no;
             $data['city'] = $request->city;
             $data['role_id'] = $request->role_id;
@@ -116,7 +117,7 @@ class VisitorController extends Controller
             $validatedData['email'] = $request->email;
         }
         if ($request->password) {
-            $validatedData['password'] = $request->password;
+            $validatedData['password'] = Hash::make($request->password);
         }
         if ($request->phone_no) {
             $validatedData['phone_no'] = $request->phone_no;
