@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @push('css')
+
 <link rel="stylesheet" href="{{ asset('assets/home/index.css') }}">
 <style>
     .wish-btn {

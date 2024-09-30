@@ -5,17 +5,10 @@
 @section('content')
 
     <div class="all-content">
-
         <!-- navbar -->
        @include('layouts.navbar')
         <!-- navbar end -->
 
-        <!-- home section -->
-        <!-- Hidden Search Bar (shows only when search icon is clicked) -->
-        <!-- <form class="form-inline my-2 my-lg-0" id="search-bar" style="display: none;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
         <div class="home">
             <div class="content" data-aos="zoom-out-right">
                 <h3>Innovative Design
@@ -243,11 +236,11 @@
             </div>
 
             <div class="credite text-center">
-                <a href="privacy policy.html"><span>Privacy policies</span></a>
+            <a href="{{ route('privacy_policy') }}"><span>Privacy policies</span></a>
                 <br>
-
-                <a href="term and condition.html"><span>Terms and Conditions</span></a>
-            </div>
+                <a href="{{ route('term_condition') }}">
+                <h4>Terms and Conditions</h4>
+            </a>            </div>
             <div class="copyright text-center">
                 &copy; 2024 <strong>PROJECT WORK</strong> |All Rights Reserved
             </div>

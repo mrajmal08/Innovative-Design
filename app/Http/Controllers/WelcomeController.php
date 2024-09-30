@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactUs;
 use Flasher\Prime\FlasherInterface;
+use App\Models\DesignWishlist;
 use Illuminate\Http\Request;
 use App\Models\Design;
 use App\Models\User;
-
+use Validator;
+use Redirect;
 
 class WelcomeController extends Controller
 {
@@ -35,30 +38,71 @@ class WelcomeController extends Controller
     public function addToWishlist($id, FlasherInterface $flasher)
     {
 
-        $design = Design::find($id);
+        if (auth()->user()) {
 
-        if (!$design) {
-            $flasher->option('position', 'top-center')->addError('Id not found');
-            return redirect()->back()->with('error', 'Id not found');
+            $wishlist = new DesignWishlist();
+            $wishlist['design_id'] = $id;
+            $wishlist['user_id'] = auth()->user()->id;
+
+            $wishlist->save();
+
+            $flasher->option('position', 'top-center')->addSuccess('Design Added To Wishlist');
+            return redirect()->back()->with('message', 'Design Added To Wishlist');
+        } else {
+            // $flasher->option('position', 'top-right')->addError('Kindly login before sending design to wishlist');
+            return redirect()->route('login')->with('error', 'Kindly login before sending design to wishlist');
         }
-
-        Design::where('id', $id)->update([
-            'wishlist' => 1
-        ]);
-
-        $flasher->option('position', 'top-center')->addSuccess('Design Added To Wishlist');
-        return redirect()->back()->with('message', 'Design Added To Wishlist');
     }
 
     public function wishlist()
     {
-        $design = Design::where('wishlist', 1)->get();
-        return view('welcome.wishlist', compact('design'));
+        $designs = DesignWishlist::with('design')
+        ->where('user_id', auth()->user()->id)
+        ->get();
+        return view('welcome.wishlist', compact('designs'));
     }
     public function contactUs()
     {
         return view('welcome.contact_us');
     }
+    public function contactStore(Request $request, FlasherInterface $flasher)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'email' => 'required',
+            'phone' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            foreach ($errors as $error) {
+                $flasher->options([
+                    'timeout' => 3000,
+                    'position' => 'top-center',
+                ])->option('position', 'top-center')->addError('Validation Error', $error);
+                return Redirect::back()->withErrors($validator)->withInput();
+            }
+        }
+
+        try {
+            $data['name'] = $request->name;
+            $data['email'] = $request->email;
+            $data['phone'] = $request->phone;
+            $data['message'] = $request->message;
+
+            ContactUs::create($data);
+
+            $flasher->option('position', 'top-center')->addSuccess('Your Message Sent Successfully');
+            return redirect()->back()->with('message', 'Your Message Sent Successfully');
+        } catch (\Exception $e) {
+
+            $flasher->option('position', 'top-center')->addError('Something went wrong');
+            return redirect()->route('design.index')->with('message', 'Something went wrong');
+        }
+    }
+
     public function faq()
     {
         return view('welcome.faq');
@@ -78,7 +122,9 @@ class WelcomeController extends Controller
     }
     public function trends()
     {
-        return view('welcome.trends');
+        $design = Design::all();
+
+        return view('welcome.trends', compact('design'));
     }
     public function videos()
     {

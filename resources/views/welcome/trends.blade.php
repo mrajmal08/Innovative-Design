@@ -23,69 +23,38 @@
         </ul>
 
         <div class="image-container">
-            <a href="{{ asset('assets/image/blog/linh.png') }}" class="image Living-room">
-                <img src="{{ asset('assets/image/blog/linh.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/blog/living.png') }}" class="image Living-room">
-                <img src="{{ asset('assets/image/blog/living.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/blog/livi.png') }}" class="image Living-room">
-                <img src="{{ asset('assets/image/blog/livi.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/living/living45.png') }}" class="image Living-room">
-                <img src="{{ asset('assets/image/living/living45.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/blog/bed.png') }}" class="image Bed-room">
-                <img src="{{ asset('assets/image/blog/bed.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/blog/bedroom.png') }}" class="image Bed-room">
-                <img src="{{ asset('assets/image/blog/bedroom.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/bedroom/bedr5.png') }}" class="image Bed-room">
-                <img src="{{ asset('assets/image/bedroom/bedr5.png') }}" alt="">
-            </a>
 
-            <a href="{{ asset('assets/image/blog/kit.png') }}" class="image Kitchen">
-                <img src="{{ asset('assets/image/blog/kit.png') }}" alt="">
+            @foreach ($design->where('cat_id', 1) as $item)
+            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Living-room">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" class="img-fluid" alt="">
             </a>
+            @endforeach
+            @foreach ($design->where('cat_id', 2) as $item)
+            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Bed-room">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
+            </a>
+            @endforeach
+            @foreach ($design->where('cat_id', 3) as $item)
+            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Kitchen">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
+            </a>
+            @endforeach
 
-            <a href="{{ asset('assets/image/blog/kitchen.png') }}" class="image Kitchen">
-                <img src="{{ asset('assets/image/blog/kitchen.png') }}" alt="">
+            @foreach ($design->where('cat_id', 4) as $item)
+            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image officeroom">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
             </a>
-            <a href="{{ asset('assets/image/blog/new.png') }}" class="image Kitchen">
-                <img src="{{ asset('assets/image/blog/new.png') }}" alt="">
+            @endforeach
+            @foreach ($design->where('cat_id', 5) as $item)
+            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Dinning">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
             </a>
-
-
-            <a href="{{ asset('assets/image/blog/off.png') }}" class="image officeroom">
-                <img src="{{ asset('assets/image/blog/off.png') }}" alt="">
+            @endforeach
+            @foreach ($design->where('cat_id', 6) as $item)
+            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image BathRoom">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
             </a>
-            <a href="{{ asset('assets/image/blog/office.png') }}" class="image officeroom">
-                <img src="{{ asset('assets/image/blog/office.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/blog/ofic.png') }}" class="image officeroom">
-                <img src="{{ asset('assets/image/blog/ofic.png') }}" alt="">
-            </a>
-
-            <a href="{{ asset('assets/image/blog/din.png') }}" class="image Dinning">
-                <img src="{{ asset('assets/image/blog/din.png') }}" alt="">
-            </a>
-            <a href="{{ asset('assets/image/blog/dining.png') }}" class="image Dinning">
-                <img src="{{ asset('assets/image/blog/dining.png') }}" alt="">
-                <a href="{{ asset('assets/image/shew.png') }}" class="image Dinning">
-                    <img src="{{ asset('assets/image/shew.png') }}" alt="">
-                </a>
-                <a href="{{ asset('assets/image/blog/bath.png') }}" class="image BathRoom">
-                    <img src="{{ asset('assets/image/blog/bath.png') }}" alt="">
-                </a>
-                <a href="{{ asset('assets/image/blog/bathr.png') }}" class="image BathRoom">
-                    <img src="{{ asset('assets/image/blog/bathr.png') }}" alt="">
-                </a>
-                <a href="{{ asset('assets/image/bath/b3.png') }}" class="image BathRoom">
-                    <img src="{{ asset('assets/image/bath/b3.png') }}" alt="">
-                </a>
-
-
+            @endforeach
         </div>
     </div>
 
@@ -141,10 +110,12 @@
         </div>
 
         <div class="credite text-center">
-        <a href="{{ route('privacy_policy') }}"><span>Privacy policies</span></a>
+            <a href="{{ route('privacy_policy') }}"><span>Privacy policies</span></a>
             <br>
 
-            <a href="{{ route('term_condition') }}"><h4>Terms and Conditions</h4></a>
+            <a href="{{ route('term_condition') }}">
+                <h4>Terms and Conditions</h4>
+            </a>
         </div>
         <div class="copyright text-center">
             &copy; ©2024 <strong>PROJECT WORK</strong> |All Rights Reserved

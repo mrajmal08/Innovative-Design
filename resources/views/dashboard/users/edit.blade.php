@@ -53,7 +53,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="phone_no">Phone</label>
-                                            <input type="text" class="form-control" name="phone_no" value="{{ $user->phone_no }}" placeholder="Phone Number" required>
+                                            <input type="number" class="form-control" name="phone_no" value="{{ $user->phone_no }}" placeholder="Phone Number" required>
                                         </div>
                                         <div class="col">
                                             <label for="city">City</label>

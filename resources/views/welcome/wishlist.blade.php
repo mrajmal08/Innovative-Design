@@ -41,12 +41,11 @@
     </header>
     <main>
         <div class="gallery">
-            @foreach ($design as $item)
+            @foreach ($designs as $item)
 
             <div class="gallery-item">
-                <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" alt="Living Room " width="450" height="300">
+                <img src="{{ asset('assets/image/designs') . '/' . $item->design->image }}" alt="Living Room " width="450" height="300">
                 <button onclick="sendToDesigner('living/iamd3.png')">Send to Designer</button>
-                <!-- <a type="button" class="wish-btn" href="{{ route('add_to_wishlist', $item->id) }}">Add to Wishlist</a> -->
             </div>
 
             @endforeach

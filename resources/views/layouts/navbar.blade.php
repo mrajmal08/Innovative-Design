@@ -35,7 +35,6 @@
                 </a>
                 <div class="dropdown-menu">
                     <a href="{{ route('designers') }}" class="dropdown-item">Name</a>
-                    <a href="interior.html" class="dropdown-item">Contact Information</a>
                 </div>
             </li>
             <!-- dropdown -->

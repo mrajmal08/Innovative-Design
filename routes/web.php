@@ -20,6 +20,7 @@ Route::get('add_to_wishlist/{id}', [App\Http\Controllers\WelcomeController::clas
 Route::get('wishlist', [App\Http\Controllers\WelcomeController::class, 'wishlist'])->name('wishlist');
 Route::get('designer/detail/{id}', [App\Http\Controllers\WelcomeController::class, 'designerDetail'])->name('designer.detail');
 Route::get('contact_us', [App\Http\Controllers\WelcomeController::class, 'contactUs'])->name('contact_us');
+Route::post('contact_us/store', [App\Http\Controllers\WelcomeController::class, 'contactStore'])->name('contact.store');
 Route::get('faq', [App\Http\Controllers\WelcomeController::class, 'faq'])->name('faq');
 Route::get('about_us', [App\Http\Controllers\WelcomeController::class, 'aboutUs'])->name('about_us');
 Route::get('privacy_policy', [App\Http\Controllers\WelcomeController::class, 'privacyPolicy'])->name('privacy_policy');
