@@ -198,6 +198,8 @@ class UserController extends Controller
 
         try {
 
+            if (auth()->user()) {
+
             if(!$request->assignee){
                 $flasher->option('position', 'top-center')->addError('please select the designer');
                 return redirect()->back()->with('please select the designer');
@@ -225,11 +227,18 @@ class UserController extends Controller
 
             $flasher->option('position', 'top-center')->addSuccess('Design assign to the designer Successfully');
             return redirect()->back()->with('message', 'Design assign to the designer Successfully');
+        } else {
+            $flasher->option('position', 'top-right')->addError('Kindly login before sending design to designer');
+            return redirect()->route('login')->with('error', 'Kindly login before sending design to wishlist');
+        }
+
 
         } catch (\Exception $e) {
             $flasher->option('position', 'top-center')->addError('Something went wrong');
             return redirect()->back()->with('message', 'Something went wrong');
         }
+
+
     }
 
     public function assignTasks(){
