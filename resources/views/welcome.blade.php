@@ -25,28 +25,6 @@
             </div>
 
         </div>
-        <!-- home section end -->
-        <script>
-            const searchIcon = document.getElementById('search-icon');
-            const searchBar = document.getElementById('search-bar');
-
-            searchIcon.addEventListener('click', () => {
-                const currentPage = window.location.pathname;
-
-                // Show search bar only on the home page
-                if (currentPage.includes('home.html') || currentPage === "/") {
-                    // Toggle search bar visibility
-                    if (searchBar.style.display === 'none' || searchBar.style.display === '') {
-                        searchBar.style.display = 'flex'; // Show search bar
-                    } else {
-                        searchBar.style.display = 'none'; // Hide search bar
-                    }
-                } else {
-                    // Redirect to home page if the user is not on home
-                    window.location.href = 'home.html';
-                }
-            });
-        </script>
 
         <!-- top cards -->
         <div class="container" id="box" data-aos="fade-up"
@@ -157,9 +135,7 @@
 
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-            crossorigin="anonymous"></script>
+        
         <!-- gallary -->
         <section id="gallary" data-aos="fade-up"
             data-aos-duration="1500">

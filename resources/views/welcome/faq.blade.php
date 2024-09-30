@@ -4,7 +4,6 @@
 @endpush
 @section('content')
 
-
     <div class="all-content">
         <!-- navbar -->
         @include('layouts.navbar')

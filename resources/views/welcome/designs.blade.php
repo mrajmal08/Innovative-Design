@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @push('css')
-
 <link rel="stylesheet" href="{{ asset('assets/home/index.css') }}">
 <style>
     .wish-btn {
@@ -22,18 +21,21 @@
         text-decoration: none;
 
     }
+
     .modal {
         z-index: 1050;
-        }
+    }
 
-        .modal-backdrop {
+    .modal-backdrop {
         z-index: 1040;
-        }
+    }
 </style>
 @endpush
 @section('content')
 
+
 <div class="all-content">
+
     <!-- navbar -->
     @include('layouts.navbar')
     <!-- navbar end -->
@@ -42,7 +44,7 @@
         <h1>Living Room Designs</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Back to Portfolio</a></li>
+                <li><a href="{{ route('welcome') }}">Back to Portfolio</a></li>
                 <li><a href="{{ route('wishlist') }}">View Wishlist</a></li>
             </ul>
         </nav>
@@ -52,44 +54,48 @@
             @foreach ($design as $item)
 
             <div class="gallery-item">
-                <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" alt="Living Room " width="450" height="300">
-                <!-- <button onclick="sendToDesigner('living/iamd3.png')">Send to Designer</button> -->
-                <button type="button"  data-toggle="modal" data-target="#exampleModal{{$item->id}}">Send to Designer</button>
+                <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" alt="Living Room " class="popup-img" width="450" height="300">
+                <button type="button" data-toggle="modal" data-target="#exampleModal{{$item->id}}">Send to Designer</button>
                 <a type="button" class="wish-btn" href="{{ route('add_to_wishlist', $item->id) }}">Add to Wishlist</a>
             </div>
-
             <div class="modal fade" id="exampleModal{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                   <form method="POST" action="{{ route('assign.design') }}">
-                    @csrf
-                   <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Send this design to the designer</h5>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <input type="hidden" name="design_id" value="{{ $item->id }}" />
-                        <select for="designers" class="form-control" name="assignee">
-                            <option selected disabled> -- select one --</option>
-                            @foreach ($designers as $row)
-                                <option value="{{ $row->id }}">{{ $row->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
-                    </div>
-                   </form>
+                        <form method="POST" action="{{ route('assign.design') }}">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Send this design to the designer</h5>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" name="design_id" value="{{ $item->id }}" />
+                                <select for="designers" class="form-control" name="assignee">
+                                    <option selected disabled> -- select one --</option>
+                                    @foreach ($designers as $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }} - {{ $row->skills }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
             @endforeach
 
+            <!-- Popup Container -->
+            <div id="popup" class="popup">
+                <span class="close">&times;</span>
+                <img class="popup-content" id="popup-image">
+            </div>
+
+            <!-- Add more designs as needed -->
         </div>
     </main>
-    <script src="index.js"></script>
+    <script src="{{ asset('assets/js/index.js') }}"></script>
     <!-- footer -->
     <footer id="footer" data-aos="fade-up"
         data-aos-duration="1500">
@@ -115,11 +121,10 @@
     </footer>
     <!-- footer -->
 
-    <a href="#" class="arrow"><i><img src="image/up-arrow.png" alt="" width="50px"></i></a>
+    <a href="#" class="arrow"><i><img src="{{ asset('assets/image/up-arrow.png') }}" alt="" width="50px"></i></a>
 </div>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
 </script>
-
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @push('css')
 <link rel="stylesheet" href="{{ asset('assets/home/style6.css') }}">
+
 @endpush
 @section('content')
 
@@ -25,39 +26,43 @@
         <div class="image-container">
 
             @foreach ($design->where('cat_id', 1) as $item)
-            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Living-room">
-                <img src="{{ asset('assets/image/designs/' . $item->image) }}" class="img-fluid" alt="">
-            </a>
+            <div class="image Living-room">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" class="img-fluid popup-img" alt="">
+            </div>
             @endforeach
             @foreach ($design->where('cat_id', 2) as $item)
-            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Bed-room">
-                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
-            </a>
+            <div class="image Bed-room">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="" class="popup-img">
+            </div>
             @endforeach
             @foreach ($design->where('cat_id', 3) as $item)
-            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Kitchen">
-                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
-            </a>
+            <div class="image Kitchen">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="" class="popup-img">
+            </div>
             @endforeach
 
             @foreach ($design->where('cat_id', 4) as $item)
-            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image officeroom">
-                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
-            </a>
+            <div class="image officeroom">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="" class="popup-img">
+            </div>
             @endforeach
             @foreach ($design->where('cat_id', 5) as $item)
-            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image Dinning">
-                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
-            </a>
+            <div class="image Dinning">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="" class="popup-img">
+            </div>
             @endforeach
             @foreach ($design->where('cat_id', 6) as $item)
-            <a href="{{ asset('assets/image/designs/' . $item->image) }}" class="image BathRoom">
-                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="">
-            </a>
+            <div class="image BathRoom">
+                <img src="{{ asset('assets/image/designs/' . $item->image) }}" alt="" class="popup-img">
+            </div>
             @endforeach
         </div>
     </div>
 
+        <div id="popup" class="popup">
+                <span class="close">&times;</span>
+                <img class="popup-content" id="popup-image">
+            </div>
 
     <!-- jquery cdn link  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -96,6 +101,7 @@
         });
     </script>
 
+<script src="{{ asset('assets/js/index.js') }}"></script>
 
     <!-- footer -->
     <footer id="footer" data-aos="fade-up"

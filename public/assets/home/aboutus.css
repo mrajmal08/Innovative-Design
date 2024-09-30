@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Uchen', serif;
+    font-family: "Nunito", sans-serif
   }
   .all-content{
     background: url(/assets/image/about.png);
@@ -151,7 +151,7 @@
     width: 100%;
     padding: 90px 0;
     background: white;
-    
+
   }
   .pic{
     height: 330px;
