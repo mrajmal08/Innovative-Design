@@ -17,7 +17,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Visitor</li>
                         </ol>
                     </div>
                 </div>
@@ -31,9 +31,9 @@
 
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Update Designer</h3>
+                                <h3 class="card-title">Update Visitor</h3>
                             </div>
-                            <form method="POST" action="{{ route('users.update', [$user->id]) }}"  enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('visitor.update', [$user->id]) }}"  enctype="multipart/form-data">
                                     @csrf
                                 <div class="card-body">
                                     <div class="row">
@@ -53,48 +53,19 @@
                                     <div class="row">
                                         <div class="col">
                                             <label for="phone_no">Phone</label>
-                                            <input type="text" class="form-control" name="phone_no" value="{{ $user->phone_no }}" placeholder="Phone Number" required>
+                                            <input type="number" class="form-control" name="phone_no" value="{{ $user->phone_no }}" placeholder="Phone Number" required>
                                         </div>
                                         <div class="col">
-                                            <label for="city">City</label>
-                                            <input type="text" class="form-control" name="city" value="{{ $user->city }}" placeholder="City">
-                                        </div>
-                                        <div class="col">
-                                            <label for="country">Country</label>
-                                            <input type="text" class="form-control" name="country" value="{{ $user->country }}" placeholder="Country">
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="experience">Experience</label>
-                                            <input type="text" class="form-control" name="experience" value="{{ $user->experience }}" placeholder="Experience" required>
-                                        </div>
-                                        <div class="col">
-                                            <label for="specialization">Specialization</label>
-                                            <input type="text" class="form-control" name="specialization" value="{{ $user->specialization }}" placeholder="Specialization">
-                                        </div>
-                                        <div class="col">
-                                            <label for="skills">Skills</label>
-                                            <input type="text" class="form-control" name="skills" value="{{ $user->skills }}" placeholder="Skills">
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="image">Upload Image</label>
-                                            <input type="file" class="form-control" name="image" accept=".png, .jpg, .jpeg, .webp" placeholder=" ">
-                                        </div>
-                                        <div class="col">
-
+                                            <label for="city">Address</label>
+                                            <input type="text" class="form-control" name="city" value="{{ $user->city }}" placeholder="Address">
                                         </div>
                                         <div class="col">
 
                                         </div>
                                     </div>
 
-
                                     <div class="row">
-                                        <input type="hidden" name="role_id" value="2">
+                                        <input type="hidden" name="role_id" value="3">
                                     </div>
                                 </div>
 

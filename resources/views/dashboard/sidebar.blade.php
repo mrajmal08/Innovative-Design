@@ -12,6 +12,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('visitor.index') }}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-primary"></i>
+                        <p class="text">Visitors</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('design.index') }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-info"></i>
                         <p class="text">Designs</p>

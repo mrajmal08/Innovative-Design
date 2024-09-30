@@ -19,7 +19,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Visitor</li>
                         </ol>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('users.create') }}" type="button" class="btn btn-success btn-sm">Add New Designer</a>
+                                <a href="{{ route('visitor.create') }}" type="button" class="btn btn-success btn-sm">Add New Visitor</a>
                             </div>
 
                             <div class="card-body">
@@ -44,33 +44,27 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
-                                            <th>City</th>
-                                            <th>Experience</th>
-                                            <th>Specialization</th>
-                                            <th>Skills</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                    @foreach ($users as $item)
+                                    @foreach ($visitors as $item)
 
                                     <tr>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone_no }}</td>
                                             <td>{{ $item->city }}</td>
-                                            <td>{{ $item->experience }}</td>
-                                            <td>{{ $item->specialization }}</td>
-                                            <td>{{ $item->skills }}</td>
                                             <td>
-                                            <a href="{{ route('users.edit', [$item->id]) }}" class="me-2">
+                                            <a href="{{ route('visitor.edit', [$item->id]) }}" class="me-2">
                                         <i class="fas fa-pen"></i>
                                             </a>
-                                            <form method="GET" action="{{ route('users.delete', $item->id) }}" class="d-inline">
+                                            <form method="GET" action="{{ route('visitor.delete', $item->id) }}" class="d-inline">
                                                 @csrf
                                                 <input name="_method" type="hidden" value="DELETE">
-                                                <a href="{{ route('users.delete', $item->id) }}" class="show_confirm" data-toggle="tooltip" title="Delete">
+                                                <a href="{{ route('visitor.delete', $item->id) }}" class="show_confirm" data-toggle="tooltip" title="Delete">
                                                     <i class="fas fa-trash text-danger" style="font-weight: bold;"></i>
                                                 </a>
                                             </form>
@@ -85,10 +79,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone Number</th>
-                                            <th>City</th>
-                                            <th>Experience</th>
-                                            <th>Specialization</th>
-                                            <th>Skills</th>
+                                            <th>Address</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>

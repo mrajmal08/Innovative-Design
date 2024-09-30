@@ -41,6 +41,14 @@ Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edi
 Route::post('/users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
 
+// Visitors Routes
+Route::get('/visitor', [App\Http\Controllers\VisitorController::class, 'index'])->name('visitor.index');
+Route::get('/visitor/create', [App\Http\Controllers\VisitorController::class, 'create'])->name('visitor.create');
+Route::post('/visitor/store', [App\Http\Controllers\VisitorController::class, 'store'])->name('visitor.store');
+Route::get('/visitor/edit/{id}', [App\Http\Controllers\VisitorController::class, 'edit'])->name('visitor.edit');
+Route::post('/visitor/update/{id}', [App\Http\Controllers\VisitorController::class, 'update'])->name('visitor.update');
+Route::get('/visitor/delete/{id}', [App\Http\Controllers\VisitorController::class, 'delete'])->name('visitor.delete');
+
 // Design Routes
 Route::get('/design', [App\Http\Controllers\DesignController::class, 'index'])->name('design.index');
 Route::get('/design/create', [App\Http\Controllers\DesignController::class, 'create'])->name('design.create');
