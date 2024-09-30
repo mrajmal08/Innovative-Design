@@ -34,7 +34,7 @@
                     Designer Profile
                 </a>
                 <div class="dropdown-menu">
-                    <a href="{{ route('designers') }}" class="dropdown-item">Name</a>
+                    <a href="{{ route('designers') }}" class="dropdown-item">Designers</a>
                 </div>
             </li>
             <!-- dropdown -->

@@ -7,6 +7,7 @@ use Flasher\Prime\FlasherInterface;
 use App\Models\DesignWishlist;
 use App\Models\RoomMakeover;
 use Illuminate\Http\Request;
+use App\Models\Feedback;
 use App\Models\Design;
 use App\Models\User;
 use Validator;
@@ -35,7 +36,10 @@ class WelcomeController extends Controller
     public function designerDetail($id)
     {
 
-        return view('welcome.designer_detail');
+        $designer = User::where('id', $id)
+        ->with('feedbacks')
+        ->first();
+        return view('welcome.designer_detail', compact('designer'));
     }
     public function addToWishlist($id, FlasherInterface $flasher)
     {
@@ -136,5 +140,24 @@ class WelcomeController extends Controller
     {
         $makeover = RoomMakeover::orderBy('id', 'DESC')->get();
         return view('welcome.room_maker', compact('makeover'));
+    }
+
+    public function feedback(Request $request, FlasherInterface $flasher){
+
+        if (auth()->user()) {
+
+            $feedback = new Feedback();
+            $feedback['feedback'] = $request->feedback;
+            $feedback['assignee'] = $request->assignee;
+            $feedback['reporter'] = auth()->user()->id;
+            $feedback->save();
+
+            $flasher->option('position', 'top-center')->addSuccess('Feedback send successfully');
+            return redirect()->back()->with('message', 'Feedback send successfully');
+        } else {
+            $flasher->option('position', 'top-right')->addError('Kindly login before sending any feedback');
+            return redirect()->route('login')->with('Kindly login before sending any feedback');
+        }
+
     }
 }

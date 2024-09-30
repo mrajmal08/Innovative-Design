@@ -69,3 +69,6 @@ Route::get('/makeover/delete/{id}', [App\Http\Controllers\MakeoverController::cl
 Route::post('/assign_design', [App\Http\Controllers\UserController::class, 'assignDesign'])->name('assign.design');
 Route::get('/assign_tasks', [App\Http\Controllers\UserController::class, 'assignTasks'])->name('assign.tasks');
 Route::get('/reported_tasks', [App\Http\Controllers\UserController::class, 'reportedTasks'])->name('reported.tasks');
+
+
+Route::post('/feedback', [App\Http\Controllers\WelcomeController::class, 'feedback'])->name('feedback');
