@@ -31,6 +31,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('makeover.index') }}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-primary"></i>
+                        <p class="text">Room Makeover</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('assign.tasks') }}" class="nav-link">
                         <i class="nav-icon far fa-circle text-secondary"></i>
                         <p class="text">My Tasks</p>
@@ -42,6 +48,7 @@
                         <p class="text">My Reported Tasks</p>
                     </a>
                 </li>
+
                 @endif
 
                 @if (auth()->user()->role_id == 2)

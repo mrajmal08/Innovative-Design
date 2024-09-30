@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ContactUs;
 use Flasher\Prime\FlasherInterface;
 use App\Models\DesignWishlist;
+use App\Models\RoomMakeover;
 use Illuminate\Http\Request;
 use App\Models\Design;
 use App\Models\User;
@@ -133,6 +134,7 @@ class WelcomeController extends Controller
     }
     public function roomMaker()
     {
-        return view('welcome.room_maker');
+        $makeover = RoomMakeover::orderBy('id', 'DESC')->get();
+        return view('welcome.room_maker', compact('makeover'));
     }
 }

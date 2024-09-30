@@ -57,6 +57,15 @@ Route::get('/design/edit/{id}', [App\Http\Controllers\DesignController::class, '
 Route::post('/design/update/{id}', [App\Http\Controllers\DesignController::class, 'update'])->name('design.update');
 Route::get('/design/delete/{id}', [App\Http\Controllers\DesignController::class, 'delete'])->name('design.delete');
 
+// Design Routes
+Route::get('/makeover', [App\Http\Controllers\MakeoverController::class, 'index'])->name('makeover.index');
+Route::get('/makeover/create', [App\Http\Controllers\MakeoverController::class, 'create'])->name('makeover.create');
+Route::post('/makeover/store', [App\Http\Controllers\MakeoverController::class, 'store'])->name('makeover.store');
+Route::get('/makeover/edit/{id}', [App\Http\Controllers\MakeoverController::class, 'edit'])->name('makeover.edit');
+Route::post('/makeover/update/{id}', [App\Http\Controllers\MakeoverController::class, 'update'])->name('makeover.update');
+Route::get('/makeover/delete/{id}', [App\Http\Controllers\MakeoverController::class, 'delete'])->name('makeover.delete');
+
+
 Route::post('/assign_design', [App\Http\Controllers\UserController::class, 'assignDesign'])->name('assign.design');
 Route::get('/assign_tasks', [App\Http\Controllers\UserController::class, 'assignTasks'])->name('assign.tasks');
 Route::get('/reported_tasks', [App\Http\Controllers\UserController::class, 'reportedTasks'])->name('reported.tasks');

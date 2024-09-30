@@ -23,12 +23,12 @@
 
     }
     .modal {
-  z-index: 1050;
-}
+        z-index: 1050;
+        }
 
-.modal-backdrop {
-  z-index: 1040;
-}
+        .modal-backdrop {
+        z-index: 1040;
+        }
 </style>
 @endpush
 @section('content')

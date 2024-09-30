@@ -16,54 +16,17 @@
             data-aos-duration="1500">
             <div class="container">
                 <h1>ROOM MAKEOVER</h1>
+
                 <div class="row" style="margin-top: 30px;">
+                @foreach ($makeover as $item )
                     <div class="col-md-4 py-3 py-md-0">
                         <div class="card">
                             <div class="overlay">
                             </div>
-                            <img src="{{ asset('assets/image/blog/livbfor.jpg') }}" alt="" width="350" height="300">
+                            <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" alt="" width="350" height="300">
                         </div>
                     </div>
-                    <div class="col-md-4 py-3 py-md-0">
-                        <div class="card">
-                            <div class="overlay">
-                            </div>
-                            <img src="{{ asset('assets/image/blog/badbefo.jpg') }}" alt="" width="350" height="300">
-                        </div>
-                    </div>
-                    <div class="col-md-4 py-3 py-md-0">
-                        <div class="card">
-                            <div class="overlay">
-                            </div>
-                            <img src="{{ asset('assets/image/kit.png.png') }}" alt="" alt="" width="350" height="300">
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row" style="margin-top: 30px;" data-aos="fade-up"
-                    data-aos-duration="1500">
-                    <div class="col-md-4 py-3 py-md-0">
-                        <div class="card">
-                            <div class="overlay">
-                            </div>
-                            <img src="{{ asset('assets/image/blog/dinnbe.jpg') }}" alt="" width="350" height="300">
-                        </div>
-                    </div>
-                    <div class="col-md-4 py-3 py-md-0">
-                        <div class="card">
-                            <div class="overlay">
-                            </div>
-                            <img src="{{ asset('assets/image/blog/ofic.png') }}" alt="" width="350" height="300">
-                        </div>
-                    </div>
-                    <div class="col-md-4 py-3 py-md-0">
-                        <div class="card">
-                            <div class="overlay">
-                            </div>
-                            <img src="{{ asset('assets/image/blog/bathr.png') }}" alt="" width="350" height="300">
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
             </div>
