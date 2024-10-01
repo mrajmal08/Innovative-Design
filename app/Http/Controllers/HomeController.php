@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Design;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $designCount = Design::count();
+        $designerCount = User::where('role_id', 2)->count();
+        $visitorCount = User::where('role_id', 3)->count();
+        $categoryCount = Category::count();
+
+        return view('home', compact('designCount', 'designerCount', 'visitorCount', 'categoryCount'));
     }
 }

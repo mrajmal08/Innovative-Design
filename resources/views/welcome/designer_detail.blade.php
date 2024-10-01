@@ -40,7 +40,13 @@
             <div>
                 @foreach ($designer->feedbacks as $feedback)
                 <p id="feedback-response" style="margin-bottom: 0px;">{{ $feedback->feedback }}</p>
-                <span>{{ App\Models\User::where('id', $feedback->reporter)->value('name') }}</span>
+                @php
+                $reporter = App\Models\User::select('name', 'created_at')->where('id', $feedback->reporter)->first();
+                @endphp
+
+                @if ($reporter)
+                <span>{{ $reporter->name }} - {{ $reporter->created_at->format('Y-m-d') }}</span>
+                @endif
                 @endforeach
             </div>
 

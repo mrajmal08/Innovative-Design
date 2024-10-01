@@ -31,13 +31,13 @@
 
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-                            <p>Total Users</p>
+                            <h3>{{ $designerCount }}</h3>
+                            <p>Total Designers</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('users.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -45,13 +45,13 @@
 
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53</h3>
-                            <p>Total Designers</p>
+                            <h3>{{ $visitorCount }}</h3>
+                            <p>Total Visitors</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('visitor.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -59,13 +59,13 @@
 
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
-                            <p>Unique Visitors</p>
+                            <h3>{{ $designCount }}</h3>
+                            <p>Unique Designs</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('design.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -73,8 +73,8 @@
 
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
-                            <p>Total Designs</p>
+                            <h3>{{ $categoryCount }}</h3>
+                            <p>Design Categories</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
