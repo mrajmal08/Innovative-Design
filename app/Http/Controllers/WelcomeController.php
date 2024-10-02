@@ -185,8 +185,8 @@ class WelcomeController extends Controller
         if (auth()->user()) {
             return redirect()->back()->with('message', 'Feedback send successfully');
         } else {
-            $flasher->option('position', 'top-right')->addError('Kindly login before sending any feedback');
-            return redirect()->route('login')->with('Kindly login before sending any feedback');
+            $flasher->option('position', 'top-right')->addError('Kindly login before see the designer details');
+            return redirect()->route('login')->with('Kindly login before see the designer details');
         }
     }
 }
