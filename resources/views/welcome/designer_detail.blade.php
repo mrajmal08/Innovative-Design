@@ -22,10 +22,17 @@
             </div>
         </div>
 
-        <div class="contact">
+        @if (auth()->user())
+            <div class="contact">
             <p><strong>Contact : {{ $designer->phone_no }}
-                    <p>Email : <a href="rimsha.mehmood8@gmail.com">{{ $designer->email }}</a></p>
+            <p>Email : <a href="rimsha.mehmood8@gmail.com">{{ $designer->email }}</a></p>
         </div>
+        @else
+        <div class="contact">
+            <a href="{{ route('show_details') }}"><strong>Show Contact Details </strong></a>
+        </div>
+        @endif
+
 
         <div class="feedback">
             <h3>Leave Feedback</h3>

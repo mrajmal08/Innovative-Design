@@ -23,7 +23,7 @@
                         <div class="card">
                             <div class="overlay">
                             </div>
-                            <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" alt="" width="350" height="300">
+                            <img src="{{ asset('assets/image/designs') . '/' . $item->image }}" class="popup-img" alt="" width="350" height="300">
                         </div>
                     </div>
                     @endforeach
@@ -33,6 +33,12 @@
         </section>
         <!-- gallary -->
         <!-- footer -->
+         <div id="popup" class="popup">
+                <span class="close">&times;</span>
+                <img class="popup-content" id="popup-image">
+            </div>
+        <script src="{{ asset('assets/js/index.js') }}"></script>
+
         <footer id="footer" data-aos="fade-up"
             data-aos-duration="1500">
             <h1 class="text-center">Innovative Design</h1>

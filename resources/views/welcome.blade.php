@@ -135,7 +135,7 @@
 
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
-        
+
         <!-- gallary -->
         <section id="gallary" data-aos="fade-up"
             data-aos-duration="1500">
@@ -143,28 +143,34 @@
                 <h1>OUR GALLARY</h1>
                 <div class="row" style="margin-top: 30px;">
                     <div class="col-md-4 py-3 py-md-0">
+                    <a href="{{ route('designs', 1) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Living Room</h3>
                             </div>
                             <img src="{{ asset('assets/image/livi.png') }}" alt="" width="390" height="350">
                         </div>
+                    </a>
                     </div>
                     <div class="col-md-4 py-3 py-md-0">
+                    <a href="{{ route('designs', 2) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Bed Room</h3>
                             </div>
                             <img src="{{ asset('assets/image/bad2.png') }}" alt="" width="390" height="350">
                         </div>
+                    </a>
                     </div>
                     <div class="col-md-4 py-3 py-md-0">
+                    <a href="{{ route('designs', 3) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Kitchen Design</h3>
                             </div>
                             <img src="{{ asset('assets/image/kitcg.png') }}" alt="" width="390" height="350">
                         </div>
+                    </a>
                     </div>
                 </div>
 
@@ -172,28 +178,34 @@
                 <div class="row" style="margin-top: 30px;" data-aos="fade-up"
                     data-aos-duration="1500">
                     <div class="col-md-4 py-3 py-md-0">
+                    <a href="{{ route('designs', 4) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Dining Room</h3>
                             </div>
                             <img src="{{ asset('assets/image/dis.png') }}" alt="" width="390" height="350">
                         </div>
+                    </a>
                     </div>
                     <div class="col-md-4 py-3 py-md-0">
+                    <a href="{{ route('designs', 5) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Office Room</h3>
                             </div>
                             <img src="{{ asset('assets/image/offic.png') }}" alt="" width="390" height="350">
                         </div>
+                    </a>
                     </div>
                     <div class="col-md-4 py-3 py-md-0">
+                    <a href="{{ route('designs', 6) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Bath Room</h3>
                             </div>
                             <img src="{{ asset('assets/image/bath.png') }}" alt="" width="390" height="350">
                         </div>
+                    </a>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="{{ route('visitor.create') }}" type="button" class="btn btn-success btn-sm">Add New Visitor</a>
+                                <!-- <a href="{{ route('visitor.create') }}" type="button" class="btn btn-success btn-sm">Add New Visitor</a> -->
                             </div>
                             <div class="card-body">
                                 <table id="example1" class="table table-bordered table-striped">

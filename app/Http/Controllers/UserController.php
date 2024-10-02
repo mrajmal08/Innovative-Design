@@ -7,6 +7,7 @@ use Flasher\Prime\FlasherInterface;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\UserDesign;
+use App\Models\ContactUs;
 use App\Models\User;
 use Carbon\Carbon;
 use Validator;
@@ -179,7 +180,7 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('message', 'User updated Successfully');
     }
 
-    public function delete($id, FlasherInterface $flasher)
+    public function contact_us_detailsdelete($id, FlasherInterface $flasher)
     {
         $user = User::find($id);
         if (!$user) {
@@ -258,5 +259,11 @@ class UserController extends Controller
         return view('dashboard.tasks.reported', compact('tasks'));
     }
 
+    public function contactUsDetails(){
+
+        $contacts = ContactUs::orderBy('id', 'DESC')->get();
+
+        return view('dashboard.contact_us', compact('contacts'));
+    }
 
 }

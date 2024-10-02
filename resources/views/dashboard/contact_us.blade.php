@@ -17,8 +17,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Visitor</li>
+                            <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Home</a></li>
+                            <li class="breadcrumb-item active">Contact Us</li>
                         </ol>
                     </div>
                 </div>
@@ -37,45 +37,28 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Reporter</th>
-                                            <th>Reporter Email</th>
-                                            <th>Reporter Phone</th>
-                                            <th>Design</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
-                                    @foreach ($tasks as $item)
-                                    <?php
-                                        $assingee = App\Models\User::where('id', $item->reporter)->first();
-                                        $design = App\Models\Design::where('id', $item->design_id)->first();
-                                    ?>
-                                    <tr>
-                                            <td>{{ $assingee->name }}</td>
-                                            <td>{{ $assingee->email }}</td>
-                                            <td>{{ $assingee->phone_no }}</td>
-                                            <td>
-                                                <div class="">
-                                                    <a href="{{ asset('assets/image/designs') . '/' . $design->image }}?text=1"
-                                                        data-toggle="lightbox"
-                                                        data-title="{{ $design->name }}"
-                                                        data-gallery="gallery">
-                                                        <img src="{{ asset('assets/image/designs') . '/' . $design->image }}?text=1"
-                                                            class="img-fluid" alt="{{ $design->name }}"
-                                                            style="width:40px" />
-                                                    </a>
-                                                </div>
-                                            </td>
+                                        @foreach ($contacts as $item)
+
+                                        <tr>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->email }}</td>
+                                            <td>{{ $item->message }}</td>
                                         </tr>
 
-                                    @endforeach
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th>Reporter</th>
-                                            <th>Reporter Email</th>
-                                            <th>Reporter Phone</th>
-                                            <th>Design</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -147,7 +130,6 @@
             $(this).addClass('active');
         });
     })
-
 </script>
 
 @push('js')

@@ -58,7 +58,6 @@
                 <div class="dropdown-menu">
                     <a href="{{ route('about_us') }}" class="dropdown-item">About</a>
                     <a href="{{ route('privacy_policy') }}" class="dropdown-item">Privacy policies</a>
-                    <a href="feedback.html" class="dropdown-item">Feedback</a>
                 </div>
             </li>
             <!-- dropdown -->

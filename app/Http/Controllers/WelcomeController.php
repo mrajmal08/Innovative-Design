@@ -37,8 +37,8 @@ class WelcomeController extends Controller
     {
 
         $designer = User::where('id', $id)
-        ->with('feedbacks')
-        ->first();
+            ->with('feedbacks')
+            ->first();
         return view('welcome.designer_detail', compact('designer'));
     }
     public function addToWishlist($id, FlasherInterface $flasher)
@@ -60,12 +60,30 @@ class WelcomeController extends Controller
         }
     }
 
+    public function removeWishlist($id, FlasherInterface $flasher)
+    {
+        $wishlist = DesignWishlist::where('design_id', $id)
+            ->where('user_id', auth()->user()->id)
+            ->first();
+
+        if ($wishlist) {
+            $wishlist->delete();
+            $flasher->option('position', 'top-center')->addSuccess('Design removed from Wishlist successfully');
+        } else {
+            $flasher->option('position', 'top-center')->addError('Design not found in your Wishlist');
+        }
+
+        return redirect()->back()->with('message', 'Wishlist update completed');
+    }
+
     public function wishlist()
     {
         $designs = DesignWishlist::with('design')
-        ->where('user_id', auth()->user()->id)
-        ->get();
-        return view('welcome.wishlist', compact('designs'));
+            ->where('user_id', auth()->user()->id)
+            ->get();
+        $designers = User::where('role_id', 2)->orderBy('id', 'DESC')->get();
+
+        return view('welcome.wishlist', compact('designs', 'designers'));
     }
     public function contactUs()
     {
@@ -142,7 +160,8 @@ class WelcomeController extends Controller
         return view('welcome.room_maker', compact('makeover'));
     }
 
-    public function feedback(Request $request, FlasherInterface $flasher){
+    public function feedback(Request $request, FlasherInterface $flasher)
+    {
 
         if (auth()->user()) {
 
@@ -158,6 +177,16 @@ class WelcomeController extends Controller
             $flasher->option('position', 'top-right')->addError('Kindly login before sending any feedback');
             return redirect()->route('login')->with('Kindly login before sending any feedback');
         }
+    }
 
+    public function showDetails(FlasherInterface $flasher)
+    {
+
+        if (auth()->user()) {
+            return redirect()->back()->with('message', 'Feedback send successfully');
+        } else {
+            $flasher->option('position', 'top-right')->addError('Kindly login before sending any feedback');
+            return redirect()->route('login')->with('Kindly login before sending any feedback');
+        }
     }
 }

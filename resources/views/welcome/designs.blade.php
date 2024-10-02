@@ -41,7 +41,26 @@
     <!-- navbar end -->
 
     <header>
-        <h1>Living Room Designs</h1>
+        @if($design)
+            @if ($design[0]->cat_id == 1)
+            <h1>Living Room Designs</h1>
+            @endif
+            @if ($design[0]->cat_id == 2)
+            <h1>Bed Room Designs</h1>
+            @endif
+            @if ($design[0]->cat_id == 3)
+            <h1>Kitchen Designs</h1>
+            @endif
+            @if ($design[0]->cat_id == 4)
+            <h1>Dining Room Designs</h1>
+            @endif
+            @if ($design[0]->cat_id == 5)
+            <h1>Office Designs</h1>
+            @endif
+            @if ($design[0]->cat_id == 6)
+            <h1>Bath Room Designs</h1>
+            @endif
+        @endif
         <nav>
             <ul>
                 <li><a href="{{ route('welcome') }}">Back to Portfolio</a></li>

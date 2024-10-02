@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 Route::get('designs/{id}', [App\Http\Controllers\WelcomeController::class, 'designs'])->name('designs');
 Route::get('designers', [App\Http\Controllers\WelcomeController::class, 'designers'])->name('designers');
-Route::get('add_to_wishlist/{id}', [App\Http\Controllers\WelcomeController::class, 'addToWishlist'])->name('add_to_wishlist');
 Route::get('wishlist', [App\Http\Controllers\WelcomeController::class, 'wishlist'])->name('wishlist');
+Route::get('add_to_wishlist/{id}', [App\Http\Controllers\WelcomeController::class, 'addToWishlist'])->name('add_to_wishlist');
+Route::get('remove_wishlist/{id}', [App\Http\Controllers\WelcomeController::class, 'removeWishlist'])->name('remove.wishlist');
+
 Route::get('designer/detail/{id}', [App\Http\Controllers\WelcomeController::class, 'designerDetail'])->name('designer.detail');
 Route::get('contact_us', [App\Http\Controllers\WelcomeController::class, 'contactUs'])->name('contact_us');
 Route::post('contact_us/store', [App\Http\Controllers\WelcomeController::class, 'contactStore'])->name('contact.store');
@@ -40,6 +42,9 @@ Route::post('/users/store', [App\Http\Controllers\UserController::class, 'store'
 Route::get('/users/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
 Route::post('/users/update/{id}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
 Route::get('/users/delete/{id}', [App\Http\Controllers\UserController::class, 'delete'])->name('users.delete');
+
+
+Route::get('/contact_us_details', [App\Http\Controllers\UserController::class, 'contactUsDetails'])->name('contact_us.details');
 
 // Visitors Routes
 Route::get('/visitor', [App\Http\Controllers\VisitorController::class, 'index'])->name('visitor.index');
@@ -72,3 +77,4 @@ Route::get('/reported_tasks', [App\Http\Controllers\UserController::class, 'repo
 
 
 Route::post('/feedback', [App\Http\Controllers\WelcomeController::class, 'feedback'])->name('feedback');
+Route::get('/show_details', [App\Http\Controllers\WelcomeController::class, 'showDetails'])->name('show_details');

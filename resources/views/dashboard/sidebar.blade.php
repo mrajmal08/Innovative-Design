@@ -48,6 +48,12 @@
                         <p class="text">My Reported Tasks</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('contact_us.details') }}" class="nav-link">
+                        <i class="nav-icon far fa-circle text-warning"></i>
+                        <p class="text">Contact US</p>
+                    </a>
+                </li>
 
                 @endif
 
