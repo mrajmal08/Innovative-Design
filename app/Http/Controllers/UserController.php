@@ -180,6 +180,25 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('message', 'User updated Successfully');
     }
 
+
+    public function delete($id, FlasherInterface $flasher)
+    {
+        $user = User::findOrFail($id);
+        if (!$user) {
+            $flasher->option('position', 'top-center')->addError('Id not found');
+            return redirect()->route('users.index')->with('error', 'Id not found');
+        }
+        try {
+
+            $user->delete();
+            $flasher->option('position', 'top-center')->addSuccess('User deleted Successfully');
+            return redirect()->back()->with('message', 'User deleted Successfully');
+        } catch (\Exception $e) {
+            $flasher->option('position', 'top-center')->addError('Something went wrong');
+            return redirect()->back()->with('message', 'Something went wrong');
+        }
+    }
+
     public function contact_us_detailsdelete($id, FlasherInterface $flasher)
     {
         $user = User::find($id);
@@ -195,75 +214,74 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('message', 'User deleted Successfully');
     }
 
-    public function assignDesign(Request $request, FlasherInterface $flasher){
+    public function assignDesign(Request $request, FlasherInterface $flasher)
+    {
 
         try {
 
             if (auth()->user()) {
 
-            if(!$request->assignee){
-                $flasher->option('position', 'top-center')->addError('please select the designer');
-                return redirect()->back()->with('please select the designer');
+                if (!$request->assignee) {
+                    $flasher->option('position', 'top-center')->addError('please select the designer');
+                    return redirect()->back()->with('please select the designer');
+                }
+
+                $userDesign = new UserDesign();
+
+                $alreadyExist = $userDesign->where([
+                    ['assignee', $request->assignee],
+                    ['design_id', $request->design_id],
+                    ['reporter', auth()->user()->id]
+                ])->first();
+
+                if ($alreadyExist) {
+                    $message = 'This design is already assigned to this designer';
+                    $flasher->option('position', 'top-center')->addError($message);
+                    return redirect()->back()->with($message);
+                }
+
+                $userDesign['assignee'] = $request->assignee;
+                $userDesign['design_id'] = $request->design_id;
+                $userDesign['reporter'] = auth()->user()->id;
+
+                $userDesign->save();
+
+                $flasher->option('position', 'top-center')->addSuccess('Design assign to the designer Successfully');
+                return redirect()->back()->with('message', 'Design assign to the designer Successfully');
+            } else {
+                $flasher->option('position', 'top-right')->addError('Kindly login before sending design to designer');
+                return redirect()->route('login')->with('error', 'Kindly login before sending design to wishlist');
             }
-
-            $userDesign = new UserDesign();
-
-            $alreadyExist = $userDesign->where([
-                ['assignee', $request->assignee],
-                ['design_id', $request->design_id],
-                ['reporter', auth()->user()->id]
-            ])->first();
-
-            if ($alreadyExist) {
-                $message = 'This design is already assigned to this designer';
-                $flasher->option('position', 'top-center')->addError($message);
-                return redirect()->back()->with($message);
-            }
-
-            $userDesign['assignee'] = $request->assignee;
-            $userDesign['design_id'] = $request->design_id;
-            $userDesign['reporter'] = auth()->user()->id;
-
-            $userDesign->save();
-
-            $flasher->option('position', 'top-center')->addSuccess('Design assign to the designer Successfully');
-            return redirect()->back()->with('message', 'Design assign to the designer Successfully');
-        } else {
-            $flasher->option('position', 'top-right')->addError('Kindly login before sending design to designer');
-            return redirect()->route('login')->with('error', 'Kindly login before sending design to wishlist');
-        }
-
-
         } catch (\Exception $e) {
             $flasher->option('position', 'top-center')->addError('Something went wrong');
             return redirect()->back()->with('message', 'Something went wrong');
         }
-
-
     }
 
-    public function assignTasks(){
+    public function assignTasks()
+    {
 
         $tasks = UserDesign::with('design')
-        ->where('assignee', auth()->user()->id)
-        ->get();
+            ->where('assignee', auth()->user()->id)
+            ->get();
         return view('dashboard.tasks.index', compact('tasks'));
     }
 
-    public function reportedTasks() {
+    public function reportedTasks()
+    {
 
         $tasks = UserDesign::with('design')
-        ->where('reporter', auth()->user()->id)
-        ->get();
+            ->where('reporter', auth()->user()->id)
+            ->get();
 
         return view('dashboard.tasks.reported', compact('tasks'));
     }
 
-    public function contactUsDetails(){
+    public function contactUsDetails()
+    {
 
         $contacts = ContactUs::orderBy('id', 'DESC')->get();
 
         return view('dashboard.contact_us', compact('contacts'));
     }
-
 }
