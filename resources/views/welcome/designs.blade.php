@@ -51,10 +51,10 @@
             @if ($design[0]->cat_id == 3)
             <h1>Kitchen Designs</h1>
             @endif
-            @if ($design[0]->cat_id == 4)
+            @if ($design[0]->cat_id == 5)
             <h1>Dining Room Designs</h1>
             @endif
-            @if ($design[0]->cat_id == 5)
+            @if ($design[0]->cat_id == 4)
             <h1>Office Designs</h1>
             @endif
             @if ($design[0]->cat_id == 6)

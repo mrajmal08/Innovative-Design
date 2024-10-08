@@ -178,7 +178,7 @@
                 <div class="row" style="margin-top: 30px;" data-aos="fade-up"
                     data-aos-duration="1500">
                     <div class="col-md-4 py-3 py-md-0">
-                    <a href="{{ route('designs', 4) }}" class="card-link">
+                    <a href="{{ route('designs', 5) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Dining Room</h3>
@@ -188,7 +188,7 @@
                     </a>
                     </div>
                     <div class="col-md-4 py-3 py-md-0">
-                    <a href="{{ route('designs', 5) }}" class="card-link">
+                    <a href="{{ route('designs', 4) }}" class="card-link">
                         <div class="card">
                             <div class="overlay">
                                 <h3 class="text-center">Office Room</h3>

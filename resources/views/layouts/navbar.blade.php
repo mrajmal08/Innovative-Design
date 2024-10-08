@@ -22,8 +22,8 @@
                     <a href="{{ route('designs', 1) }}" class="dropdown-item">Living Room</a>
                     <a href="{{ route('designs', 2) }}" class="dropdown-item">Bed Room</a>
                     <a href="{{ route('designs', 3) }}" class="dropdown-item">Kitchen Design</a>
-                    <a href="{{ route('designs', 4) }}" class="dropdown-item">Dining Room</a>
-                    <a href="{{ route('designs', 5) }}" class="dropdown-item">Office Room</a>
+                    <a href="{{ route('designs', 5) }}" class="dropdown-item">Dining Room</a>
+                    <a href="{{ route('designs', 4) }}" class="dropdown-item">Office Room</a>
                     <a href="{{ route('designs', 6) }}" class="dropdown-item">Bath Room</a>
                 </div>
             </li>
